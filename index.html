@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ส่งมาง้อน้องแบม 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .container {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .emoji {
+            font-size: 100px;
+            animation: bounce 1s infinite;
+            margin: 20px 0;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .button-wrapper {
+            position: relative;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-no {
+            background: #e0e0e0;
+            color: #666;
+            transition: all 0.2s ease;
+        }
+
+        .btn-no:hover {
+            background: #d0d0d0;
+        }
+
+        .btn-no.running {
+            position: absolute !important;
+            transition: all 0.3s ease;
+        }
+
+        .hearts {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes floatUp {
+            to {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .success-message {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-message h2 {
+            color: #667eea;
+            font-size: 36px;
+            margin: 20px 0;
+        }
+
+        .success-message .emoji {
+            font-size: 120px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .emoji {
+                font-size: 80px;
+            }
+
+            button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+
+            .success-message h2 {
+                font-size: 28px;
+            }
+
+            .success-message .emoji {
+                font-size: 100px;
+            }
+
+            .button-wrapper {
+                min-height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .emoji {
+                font-size: 60px;
+            }
+
+            button {
+                padding: 10px 25px;
+                font-size: 14px;
+            }
+
+            .button-container {
+                gap: 10px;
+            }
+
+            .button-wrapper {
+                min-height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="mainContent">
+            <div class="emoji">🥺</div>
+            <h1>แฟนเค้าขอโทษ💔</h1>
+            <p>
+                เค้าจะตั้งใจจำให้ขึ้นใจเลย<br>
+                ดีกันน้าแฟนนน 🥺👉👈
+            </p>
+            <div class="button-wrapper">
+                <div class="button-container">
+                    <button class="btn-yes" onclick="forgive()">💕 ยกโทษให้</button>
+                    <button class="btn-no" id="btnNo">😤 ไม่ยกโทษ</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <div class="emoji">🥰</div>
+            <h2>ฮึฮึรักแฟนที่ฉุดเยย! 💖</h2>
+            <p>
+                เค้าจะจำแม่นๆไม่มีลืมแน้วแงงงงง 🥺💕
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const btnNo = document.getElementById('btnNo');
+        let noClickCount = 0;
+
+        // ปุ่ม "ไม่ยกโทษ" จะหนีเมื่อเมาส์เข้าใกล้
+        btnNo.addEventListener('mouseover', function() {
+            const wrapper = document.querySelector('.button-wrapper');
+            const wrapperRect = wrapper.getBoundingClientRect();
+            
+            // เปลี่ยนเป็น position absolute เมื่อเริ่มหนี
+            btnNo.classList.add('running');
+            
+            const maxX = wrapperRect.width - btnNo.offsetWidth - 20;
+            const maxY = wrapperRect.height - btnNo.offsetHeight - 20;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            btnNo.style.left = randomX + 'px';
+            btnNo.style.top = randomY + 'px';
+            
+            noClickCount++;
+            
+            // เปลี่ยนข้อความตามจำนวนครั้งที่พยายามกด
+            if (noClickCount === 3) {
+                btnNo.textContent = '😢 นะๆ ยกโทษให้น่า';
+            } else if (noClickCount === 5) {
+                btnNo.textContent = '🥺 ขอร้องงงง';
+            } else if (noClickCount === 7) {
+                btnNo.textContent = '😭 เบื้อออ';
+            } else if (noClickCount === 10) {
+                btnNo.textContent = '💔 กดยกโทษเถอะนะ';
+            }
+        });
+
+        // ป้องกันการคลิกปุ่ม "ไม่ยกโทษ" บนมือถือ
+        btnNo.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            const wrapper = document.querySelector('.button-wrapper');
+            const wrapperRect = wrapper.getBoundingClientRect();
+            
+            btnNo.classList.add('running');
+            
+            const maxX = wrapperRect.width - btnNo.offsetWidth - 20;
+            const maxY = wrapperRect.height - btnNo.offsetHeight - 20;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            btnNo.style.left = randomX + 'px';
+            btnNo.style.top = randomY + 'px';
+            
+            noClickCount++;
+            
+            if (noClickCount === 3) {
+                btnNo.textContent = '😢 นะๆ เค้าจำแน้วว';
+            } else if (noClickCount === 5) {
+                btnNo.textContent = '🥺 น้าแฟนนน';
+            } else if (noClickCount === 7) {
+                btnNo.textContent = '😭 ฮึกกกก';
+            } else if (noClickCount === 10) {
+                btnNo.textContent = '💔 ดีกานนะะ';
+            }
+        });
+
+        function forgive() {
+            // ซ่อนเนื้อหาหลักและแสดงข้อความสำเร็จ
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // สร้างหัวใจตกลงมา
+            createHearts();
+        }
+
+        function createHearts() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'hearts';
+                    heart.textContent = '❤️';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = '100vh';
+                    heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                    heart.style.animation = `floatUp ${Math.random() * 3 + 3}s linear`;
+                    
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 6000);
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
